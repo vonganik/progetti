@@ -6,19 +6,19 @@
 }
 
 body {
-    background-color: #2b2b2b; /* Sfondo scuro fuori dal foglio */
+    background-color: #2b2b2b;
     font-family: 'Cormorant Garamond', serif;
-    color: #2c241b; /* Colore inchiostro scuro */
+    color: #2c241b;
     line-height: 1.6;
     padding: 20px;
 }
 
 /* IL FOGLIO DI CARTA ANTICA */
 .page-container {
-    max-width: 1200px; /* ALLARGATO: Più spazio per le immagini */
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: #fdfbf7; /* Colore pergamena chiaro */
-    background-image: linear-gradient(to bottom, #fdfbf7 0%, #f4e4bc 100%); /* Sfumatura invecchiata */
+    background-color: #fdfbf7;
+    background-image: linear-gradient(to bottom, #fdfbf7 0%, #f4e4bc 100%);
     padding: 60px;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     border: 1px solid #dcd0b0;
@@ -34,9 +34,9 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 3rem; /* Titolo leggermente più grande */
+    font-size: 3rem;
     letter-spacing: 2px;
-    border-bottom: 2px solid #8a1c1c; /* Linea rossa sotto il titolo */
+    border-bottom: 2px solid #8a1c1c;
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
@@ -58,7 +58,7 @@ h3 {
 h4 {
     font-family: 'Cinzel', serif;
     font-size: 1.1rem;
-    color: #8a1c1c; /* Rosso scuro per le note */
+    color: #8a1c1c;
     margin-bottom: 10px;
 }
 
@@ -71,7 +71,7 @@ h4 {
     font-size: 1.1rem;
 }
 
-/* LAYOUT DEI PROGETTI */
+/* LAYOUT DEI PROGETTI (DESKTOP) */
 .project {
     margin-bottom: 60px;
 }
@@ -82,16 +82,16 @@ h4 {
     align-items: flex-start;
 }
 
-/* Alternanza (Zig-Zag) */
+/* Alternanza Zig-Zag su Desktop */
 .content-wrapper.reverse {
     flex-direction: row-reverse;
 }
 
-/* BOX IMMAGINE (MODIFICATO PER ESSERE GRANDE) */
+/* BOX IMMAGINE */
 .image-box {
-    flex: 1.6; /* Occupa il 60% dello spazio disponibile */
+    flex: 1.6;
     text-align: center;
-    cursor: zoom-in; /* Cursore lente d'ingrandimento */
+    cursor: zoom-in;
     position: relative;
 }
 
@@ -102,23 +102,20 @@ h4 {
     padding: 5px;
     background-color: #fff;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    
-    /* Filtro Sepia per far sembrare le immagini antiche */
     filter: sepia(60%) contrast(110%);
-    transition: all 0.3s ease; /* Animazione fluida */
+    transition: all 0.3s ease;
 }
 
-/* Toglie l'effetto antico se passi col mouse sopra */
+/* Effetti Mouse Desktop */
 .image-box img:hover {
     filter: sepia(0%) contrast(100%);
-    transform: scale(1.02); /* Leggero ingrandimento al passaggio */
+    transform: scale(1.02);
     box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
 }
 
-/* ZOOM FORTE AL CLICK */
 .image-box img:active {
-    transform: scale(1.8); /* Ingrandisce quasi al doppio */
-    z-index: 999; /* Porta l'immagine sopra tutto il resto */
+    transform: scale(1.8);
+    z-index: 999;
     position: relative;
     cursor: zoom-out;
     box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
@@ -135,7 +132,7 @@ h4 {
 
 /* BOX TESTO */
 .text-box {
-    flex: 1; /* Occupa meno spazio dell'immagine */
+    flex: 1;
 }
 
 .description {
@@ -144,9 +141,9 @@ h4 {
     text-align: justify;
 }
 
-/* STILE NOTE DELL'ARCHITETTO */
+/* NOTE DELL'ARCHITETTO */
 .notes {
-    background-color: rgba(138, 28, 28, 0.05); /* Sfondo rossastro chiarissimo */
+    background-color: rgba(138, 28, 28, 0.05);
     padding: 20px;
     border-left: 2px solid #8a1c1c;
     font-size: 1.05rem;
@@ -160,7 +157,6 @@ h4 {
     margin-bottom: 12px;
 }
 
-/* ELEMENTI GRAFICI AGGIUNTIVI */
 .divider, .separator {
     border: 0;
     height: 1px;
@@ -176,29 +172,73 @@ footer {
     font-style: italic;
 }
 
-/* RESPONSIVE (PER CELLULARI) */
-@media (max-width: 900px) {
-    .page-container {
-        padding: 30px;
+/* =========================================
+   OTTIMIZZAZIONE MOBILE (SMARTPHONE)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* Riduciamo i margini esterni */
+    body {
+        padding: 10px; 
     }
 
+    /* Il foglio occupa tutto lo spazio */
+    .page-container {
+        padding: 20px 15px; 
+        width: 100%;
+    }
+
+    /* Ridimensioniamo i titoli enormi */
+    h1 {
+        font-size: 1.8rem; /* Molto più piccolo per non spezzare le parole */
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+        text-align: center; /* Titoli dei progetti centrati su mobile */
+        border-left: none; /* Togliamo la linea laterale rossa */
+        border-bottom: 3px solid #8a1c1c; /* La mettiamo sotto */
+        padding-left: 0;
+        padding-bottom: 5px;
+    }
+
+    .intro {
+        max-width: 100%; /* Testo intro a tutta larghezza */
+        font-size: 1rem;
+    }
+
+    /* Resettiamo il layout flessibile */
     .content-wrapper, 
     .content-wrapper.reverse {
-        flex-direction: column; /* Impila tutto in verticale su schermi piccoli */
-        gap: 30px;
+        flex-direction: column; /* Impila tutto in verticale */
+        gap: 25px;
     }
 
+    /* L'immagine occupa sempre il 100% della larghezza */
     .image-box {
         width: 100%;
         flex: auto;
     }
 
-    /* Su cellulare lo zoom è meno esagerato per non uscire dallo schermo */
+    /* Su mobile l'effetto active non deve esagerare con lo zoom */
     .image-box img:active {
-        transform: scale(1.1); 
+        transform: scale(1.05); /* Solo un piccolo feedback visivo al tocco */
     }
-    
-    h1 {
-        font-size: 2rem;
+
+    /* Togliamo il giustificato su mobile che a volte crea buchi nel testo */
+    .description {
+        text-align: left;
+        font-size: 1.1rem;
+    }
+
+    .notes {
+        padding: 15px;
+        font-size: 1rem;
     }
 }
