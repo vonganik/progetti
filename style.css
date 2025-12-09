@@ -1,0 +1,204 @@
+/* RESET E IMPOSTAZIONI DI BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #2b2b2b; /* Sfondo scuro fuori dal foglio */
+    font-family: 'Cormorant Garamond', serif;
+    color: #2c241b; /* Colore inchiostro scuro */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* IL FOGLIO DI CARTA ANTICA */
+.page-container {
+    max-width: 1200px; /* ALLARGATO: Più spazio per le immagini */
+    margin: 0 auto;
+    background-color: #fdfbf7; /* Colore pergamena chiaro */
+    background-image: linear-gradient(to bottom, #fdfbf7 0%, #f4e4bc 100%); /* Sfumatura invecchiata */
+    padding: 60px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border: 1px solid #dcd0b0;
+    position: relative;
+}
+
+/* STILE DEI TESTI */
+h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem; /* Titolo leggermente più grande */
+    letter-spacing: 2px;
+    border-bottom: 2px solid #8a1c1c; /* Linea rossa sotto il titolo */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.4rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: left;
+    border-left: 5px solid #8a1c1c;
+    padding-left: 15px;
+}
+
+h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: #8a1c1c; /* Rosso scuro per le note */
+    margin-bottom: 10px;
+}
+
+.intro {
+    font-style: italic;
+    text-align: center;
+    max-width: 70%;
+    margin: 0 auto 50px auto;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+/* LAYOUT DEI PROGETTI */
+.project {
+    margin-bottom: 60px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Alternanza (Zig-Zag) */
+.content-wrapper.reverse {
+    flex-direction: row-reverse;
+}
+
+/* BOX IMMAGINE (MODIFICATO PER ESSERE GRANDE) */
+.image-box {
+    flex: 1.6; /* Occupa il 60% dello spazio disponibile */
+    text-align: center;
+    cursor: zoom-in; /* Cursore lente d'ingrandimento */
+    position: relative;
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #8f8f8f;
+    padding: 5px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    
+    /* Filtro Sepia per far sembrare le immagini antiche */
+    filter: sepia(60%) contrast(110%);
+    transition: all 0.3s ease; /* Animazione fluida */
+}
+
+/* Toglie l'effetto antico se passi col mouse sopra */
+.image-box img:hover {
+    filter: sepia(0%) contrast(100%);
+    transform: scale(1.02); /* Leggero ingrandimento al passaggio */
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ZOOM FORTE AL CLICK */
+.image-box img:active {
+    transform: scale(1.8); /* Ingrandisce quasi al doppio */
+    z-index: 999; /* Porta l'immagine sopra tutto il resto */
+    position: relative;
+    cursor: zoom-out;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
+    background-color: #fdfbf7;
+}
+
+.caption {
+    display: block;
+    margin-top: 8px;
+    font-size: 1rem;
+    font-style: italic;
+    color: #666;
+}
+
+/* BOX TESTO */
+.text-box {
+    flex: 1; /* Occupa meno spazio dell'immagine */
+}
+
+.description {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* STILE NOTE DELL'ARCHITETTO */
+.notes {
+    background-color: rgba(138, 28, 28, 0.05); /* Sfondo rossastro chiarissimo */
+    padding: 20px;
+    border-left: 2px solid #8a1c1c;
+    font-size: 1.05rem;
+}
+
+.notes ul {
+    list-style-type: none;
+}
+
+.notes li {
+    margin-bottom: 12px;
+}
+
+/* ELEMENTI GRAFICI AGGIUNTIVI */
+.divider, .separator {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(138, 28, 28, 0.75), rgba(0, 0, 0, 0));
+    margin: 50px 0;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 80px;
+    font-style: italic;
+}
+
+/* RESPONSIVE (PER CELLULARI) */
+@media (max-width: 900px) {
+    .page-container {
+        padding: 30px;
+    }
+
+    .content-wrapper, 
+    .content-wrapper.reverse {
+        flex-direction: column; /* Impila tutto in verticale su schermi piccoli */
+        gap: 30px;
+    }
+
+    .image-box {
+        width: 100%;
+        flex: auto;
+    }
+
+    /* Su cellulare lo zoom è meno esagerato per non uscire dallo schermo */
+    .image-box img:active {
+        transform: scale(1.1); 
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+}
